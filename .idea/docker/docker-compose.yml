@@ -1,0 +1,13 @@
+services:
+  elasticsearch-alt:
+    container_name: elasticsearch-alt
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    volumes:
+      - ./volumes/elasticsearch-data-alt:/usr/share/elasticsearch/data
+    ports:
+      - "9201:9200"
+      - "9301:9300"
